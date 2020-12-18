@@ -22,8 +22,8 @@
 						<font color="red"></font>
                     </div>
                     <div>
-                        <label for="reNewPassword">确认新密码：</label>
-                        <input type="password" name="renewpassword" id="renewpassword" value="">
+                        <label for="rNewPassword">确认新密码：</label>
+                        <input type="password" name="rnewpassword" id="rnewpassword" value="">
 						<font color="red"></font>
                     </div>
                     <div class="providerAddBtn">
