@@ -46,4 +46,13 @@
     <filter-name>sysFilter</filter-name>
     <url-pattern>/jsp/*</url-pattern>
   </filter-mapping>
+<!--配置UserServlet-->
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.wyqian.servlet.user.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/jsp/user.do</url-pattern>
+  </servlet-mapping>
 </web-app>
