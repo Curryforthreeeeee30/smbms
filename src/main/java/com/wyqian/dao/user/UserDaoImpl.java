@@ -45,20 +45,19 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public int updatePwd(Connection connection, int id, String password) {
-        PreparedStatement preparedStatement = null;
-        String sql = "update smbms_user set userPassword = ? where id = ?";
+        PreparedStatement pstm = null;
         int execute = 0;
-
-        Object[] params = {id, password};
-        if(connection != null){
+        if (connection!=null){
+            String sql = "update smbms_user set userPassword = ? where id = ?";
+            Object params[] = {password,id};
             try {
-                execute = BaseDao.execute(connection, preparedStatement, sql, params);
+                execute = BaseDao.execute(connection, pstm, sql, params);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
-            }finally {
-                BaseDao.closeResource(null, preparedStatement, null);
             }
+            BaseDao.closeResource(null,pstm,null);
         }
+        System.out.println("进入Dao层");
         return execute;
     }
 }

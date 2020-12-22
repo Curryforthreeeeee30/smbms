@@ -37,12 +37,20 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean updatePwd(int id, String password) {
         Connection connection = null;
-        //连接数据库
-        BaseDao.getConnection();
-        int updateRows = userDao.updatePwd(connection, id, password);
-        BaseDao.closeResource(connection,null, null);
-        //如果受影响的行数>0，那么就说明修改成功！
-        return updateRows > 0 ? true : false;
+        boolean flag = false;
+        //修改密码
+        try {
+            connection = BaseDao.getConnection();
+            if (userDao.updatePwd(connection,id,password)>0){
+                flag = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            BaseDao.closeResource(connection,null,null);
+        }
+        System.out.println("进入业务层");
+        return flag;
     }
 
     @Test
