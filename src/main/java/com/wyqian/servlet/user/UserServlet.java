@@ -72,7 +72,6 @@ public class UserServlet extends HttpServlet {
         //从Session中拿id
         Object o = req.getSession().getAttribute(Constant.USER_SESSION);
         String newpassword = req.getParameter("newpassword");
-        System.out.println(newpassword);
 
         boolean flag = false;
 
