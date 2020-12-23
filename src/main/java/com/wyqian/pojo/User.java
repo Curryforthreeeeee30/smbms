@@ -21,10 +21,13 @@ public class User {
     private Integer age;//年龄
     private String userRoleName;    //用户角色名称
 
-    public Integer setAge(Date birthday){
-        Date date = new Date();
-        Integer age = date.getYear() - birthday.getYear();
+    public Integer getAge(){
         return age;
+    }
+
+    public void setAge(Date birthday){
+        Date date = new Date();
+        this.age = date.getYear() - birthday.getYear();
     }
 
     public Integer getId() {

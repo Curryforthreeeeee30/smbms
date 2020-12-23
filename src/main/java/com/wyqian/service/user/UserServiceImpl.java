@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserServiceImpl implements UserService{
 
@@ -53,10 +55,32 @@ public class UserServiceImpl implements UserService{
         return flag;
     }
 
+    @Override
+    public int getUserCount(String username, int userRole) {
+        Connection connection = null;
+        connection = BaseDao.getConnection();
+        int count = userDao.getUserCount(connection, username, userRole);
+        BaseDao.closeResource(connection, null, null);
+        return count;
+    }
+
+    @Override
+    public List<User> getUserList(String username, int userRole, int currentPageNo, int pageSize) {
+        Connection connection = null;
+        List<User> userList = new ArrayList<User>();
+        connection = BaseDao.getConnection();
+
+        userList = userDao.getUserList(connection, username, userRole, currentPageNo,pageSize);
+        BaseDao.closeResource(connection, null, null);
+        return userList;
+    }
+
     @Test
     public void test(){
         UserServiceImpl userService = new UserServiceImpl();
-        User admin = userService.login("admin", "1234567");
-        System.out.println(admin.getUserPassword());
+//        User admin = userService.login("admin", "1234567");
+//        System.out.println(admin.getUserPassword());
+        int userCount = userService.getUserCount(null, 0);
+        System.out.println(userCount);
     }
 }

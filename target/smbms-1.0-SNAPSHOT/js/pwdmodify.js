@@ -70,7 +70,7 @@ $(function(){
 		oldpassword.blur();
 		newpassword.blur();
 		rnewpassword.blur();
-		
+
 		if(oldpassword.attr("validateStatus") == "true" &&
 			newpassword.attr("validateStatus") == "true"
 			&& rnewpassword.attr("validateStatus") == "true"){
